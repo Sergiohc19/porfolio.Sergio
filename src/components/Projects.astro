@@ -1,78 +1,85 @@
 ---
-import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
+import LinkButton from "@/components/LinkButton.astro"; // Asegúrate de que la ruta sea correcta
+import GitHub from "@/components/icons/GitHub.astro";
+import Link from "@/components/icons/Link.astro";
+import NextJS from "@/components/icons/NextJS.astro"; // Asegúrate de que este componente exista
+import Tailwind from "@/components/icons/Tailwind.astro"; // Asegúrate de que este componente exista
+import ReactIcon from "@/components/icons/ReactIcon.astro";
+import Vite from "@/components/icons/Vite.astro";
 
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-}
+
+const { category } = Astro.props;
+
+// Filtra los proyectos según la categoría
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "Calculadora de Propinas",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "App de restaurante con implementación de Propinas. Creado desde cero con Vite, React y Tailwind CSS.",
+    link: "https://calculadora-de-propinas-ts.vercel.app/",
+    github: "https://github.com/Sergiohc19/Calculadora-Popinas.TS",
+    image: "/projects/mejorado.webp",
+    tags: [
+      { name: "React", class: "bg-transparent text-white", icon: ReactIcon  }, // Ahora pasamos el componente como `icon`
+      { name: "Tailwind CSS", class: "bg-[#003159] text-white", icon: Tailwind }, // Otro ejemplo de icono
+      { name: "Vite", class: "bg-transparent text-white", icon: Vite } // Otro ejemplo de icono
+    ],
+    category: "Frontend", // Categoría de este proyecto
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+    title: "Contador de calorías",
     description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "App de contador de calorías. Creado desde cero con Vite, React y Tailwind CSS.",
+    link: "https://contador-calorias-sage.vercel.app/",
+    github: "https://github.com/Sergiohc19/Contador-Calorias",
+    image: "/projects/calorias.webp",
+    tags: [
+      { name: "React", class: "bg-transparent text-white", icon: ReactIcon  }, // Ahora pasamos el componente como `icon`
+      { name: "Tailwind CSS", class: "bg-[#003159] text-white", icon: Tailwind }, // Otro ejemplo de icono
+      { name: "Vite", class: "bg-transparent text-white", icon: Vite } // Otro ejemplo de icono
+    ],
+    category: "Frontend", // Categoría de este proyecto
   },
-]
+
+  // Agrega otros proyectos aquí con la propiedad `category` adecuada
+];
+
+const filteredProjects = PROJECTS.filter(project => project.category === category)
 ---
 
 <div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+  {filteredProjects.map(({ image, title, description, tags, link, github }) => (
     <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+      <div class="w-full md:w-1/2">
+        <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <img alt={title} class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+        </div>
+      </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div class="w-full md:w-1/2 md:max-w-lg">
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+          {title}
+        </h3>
+        <div class="flex flex-wrap mt-2">
+          <ul class="flex flex-row mb-2 gap-x-2">
+            {tags.map((tag) => (
+              <li>
+                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                  {/* Usamos los componentes de los iconos directamente */}
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
+        <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+        <footer class="flex items-end justify-start mt-4 gap-x-4">
           {github && (
             <LinkButton href={github}>
               <GitHub class="size-6" />
               Code
-              
             </LinkButton>
           )}
           {link && (
@@ -82,12 +89,7 @@ const PROJECTS = [
             </LinkButton>
           )}
         </footer>
-    </div>
-  </div>
-</article>
-    ))
-  }
+      </div>
+    </article>
+  ))}
 </div>
-
-
-
