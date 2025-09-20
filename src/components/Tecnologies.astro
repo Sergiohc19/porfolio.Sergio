@@ -7,9 +7,10 @@ import CSSIcon from "./icons/CSS.astro";
 import JavaScriptIcon from "./icons/JavaScript.astro";
 import ReactIcon from "./icons/ReactIcon.astro";
 import Vite from "./icons/Vite.astro";
-// import Node from "./icons/Node.astro";
-// import Python from "./icons/Python.astro";
 import TypeScript from "./icons/TypeScript.astro";
+import Python from "./icons/Python.astro";
+import Java from "./icons/Java.astro";
+import Docker from "./icons/Docker.astro";
 
 enum TechnologyType {
   Frontend = 1,
@@ -25,6 +26,12 @@ const TECHNOLOGIES = [
     class: "bg-yellow-500 dark:bg-yellow-300/40",
     type: TechnologyType.Frontend,
   },
+       {
+    name: "Java",
+    icon: Java,
+    class: "bg-gray-600 dark:bg-gray-600",
+    type: TechnologyType.Frontend,
+  },
   {
     name: "TypeScript",
     icon: TypeScript,
@@ -32,6 +39,44 @@ const TECHNOLOGIES = [
     type: TechnologyType.Frontend,
   },
   {
+    name: "Python",
+    icon: Python,
+    class: "bg-gray-600 dark:bg-gray-600",
+    type: TechnologyType.Frontend,
+  },
+
+  {
+    name: "NextJS",
+    icon: NextJSIcon,
+    class: "bg-black dark:bg-slate-800 dark:border-slate-600 dark:border-opacity-20 border-2",
+    type: TechnologyType.Frontend,
+  },
+  
+  {
+    name: "React.js",
+    icon: ReactIcon,
+    class: "bg-gray-800 dark:border-slate-600 dark:border-opacity-20 border-2",
+    type: TechnologyType.Frontend,
+  },
+    {
+    name: "Docker",
+    icon: Docker,
+    class: "bg-black dark:bg-slate-800 dark:border-slate-600 dark:border-opacity-20 border-2",
+    type: TechnologyType.Frontend,
+  },
+  {
+    name: "Vite",
+    icon: Vite,
+    class: "bg-gray-600 dark:bg-gray-600",
+    type: TechnologyType.Frontend,
+  },
+   {
+    name: "Tailwind",
+    icon: TailwindIcon,
+    class: "bg-blue-700 dark:bg-blue-500/40",
+    type: TechnologyType.Frontend,
+  },
+    {
     name: "HTML",
     icon: HTMLIcon,
     class: "bg-orange-600 dark:bg-orange-600",
@@ -41,30 +86,6 @@ const TECHNOLOGIES = [
     name: "CSS",
     icon: CSSIcon,
     class: "bg-blue-500 dark:bg-blue-300/40",
-    type: TechnologyType.Frontend,
-  },
-  {
-    name: "Tailwind",
-    icon: TailwindIcon,
-    class: "bg-blue-700 dark:bg-blue-500/40",
-    type: TechnologyType.Frontend,
-  },
-  {
-    name: "NextJS",
-    icon: NextJSIcon,
-    class: "bg-black dark:bg-slate-800 dark:border-slate-600 dark:border-opacity-20 border-2",
-    type: TechnologyType.Frontend,
-  },
-  {
-    name: "React.js",
-    icon: ReactIcon,
-    class: "bg-gray-800 dark:border-slate-600 dark:border-opacity-20 border-2",
-    type: TechnologyType.Frontend,
-  },
-  {
-    name: "Vite",
-    icon: Vite,
-    class: "bg-gray-600 dark:bg-gray-600",
     type: TechnologyType.Frontend,
   },
   // {
